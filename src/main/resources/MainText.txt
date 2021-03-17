@@ -1,0 +1,24 @@
+    When an overloaded method is invoked, Java uses the type and number of
+ arguments as its guide to determine which version of the overloaded method to 
+ actually call. Thus, overloaded methods must differ in the type and number
+ of their parameters. While overloaded methods may have different return types,
+ the return type alone is insufficient to distinguish two versions of a method,
+ when Java encounters a call to an overloaded method, it simply executes the
+ version of the method whose parameters match the arguments used in the call.
+    There will be times when you will want to define a class member that will be
+ used independently of any object of that class. Normally, a class member must 
+ be accessed only in conjunction with an object of its class. However, it is 
+ possible to create a member that can be used by itself, without reference to a 
+ specific instance. To create such a member, precede its declaration with the 
+ keyword static. When a member is declared static, it can be accessed before 
+ any objects of its class are created, and without reference to any object. You 
+ can declare both methods and variables to be static. The most common 
+ example of a static member is main( ). Is declared as static because it 
+ must be called before any objects exist. 
+    Instance variables declared as static are, essentially, global variables. When
+ objects of its class are declared, no copy of a static variable is made. Instead, 
+ all instances of the class share the same static variable. 
+    If you need to do computation in order to initialize your static variables, you
+ can declare a static block that gets executed exactly once, when the class is 
+ first loaded. The following example shows a class that has a static method, 
+ some static variables, and a static initialization block.
