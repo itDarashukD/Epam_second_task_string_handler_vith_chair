@@ -2,10 +2,11 @@ package by.darashuk.training.parser;
 
 import by.darashuk.training.composite.api.IComposite;
 import by.darashuk.training.composite.TextComposite;
+import by.darashuk.training.constants.TextConstants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import static by.darashuk.training.composite.ComponentType.LEXEME;
+import static by.darashuk.training.enums.ComponentType.LEXEME;
 
 public class Sentence extends DataParser {
 
@@ -22,7 +23,7 @@ public class Sentence extends DataParser {
         } else {
             logger.info("IN parseText() Sentence : process parsing was start...");
 
-            String[] lexemes = input.trim().split(Separator.LEXEMES_SEPARATOR);
+            String[] lexemes = input.trim().split(TextConstants.LEXEMES_SEPARATOR);
             for (String currentString : lexemes) {
                 TextComposite currentComposite = new TextComposite(LEXEME);
                 component.add(currentComposite);

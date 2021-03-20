@@ -4,8 +4,11 @@ import by.darashuk.training.composite.api.IComposite;
 import by.darashuk.training.composite.TextComposite;
 import org.apache.log4j.Logger;
 
-
 import java.util.*;
+
+import static by.darashuk.training.constants.TextConstants.WORD_STARTING_WITH_CONSONANT;
+import static by.darashuk.training.constants.TextConstants.PUNCTUATION;
+import static by.darashuk.training.constants.TextConstants.REGEX_BLANKS;
 
 public class TextAction {
 
@@ -13,7 +16,7 @@ public class TextAction {
     private final StringBuilder withoutWords = new StringBuilder();
     private final StringBuilder allText = new StringBuilder();
 
-    public String deleteSomeWords(TextComposite mainComposite) {
+    public String deleteSomeWords(TextComposite mainComposite, int WORD_LENGTH) {
         if (mainComposite == null) {
             logger.info("IN deleteSomeWords() : We got a problem : mainComposite == null !");
         } else {
@@ -21,12 +24,9 @@ public class TextAction {
 
             getAllText(mainComposite);
 
-            final int WORD_LENGTH = 3;
-            final String WORD_STARTING_WITH_CONSONANT = "^(?i:[qwrtplkjhgfdszxcvbnm]).*";
-
             ArrayList<String> arrayOfWords = new ArrayList<>(
-                    Arrays.asList(allText.toString().replaceAll("\\p{Punct}", "")
-                            .split("\\p{Blank}")));
+                    Arrays.asList(allText.toString().replaceAll(PUNCTUATION, "")
+                            .split(REGEX_BLANKS)));
 
             arrayOfWords.removeIf(element ->
                     (element.length() == WORD_LENGTH)
@@ -44,7 +44,6 @@ public class TextAction {
 
         for (int i = 0; i < mainComposite.getTextComponents().size(); i++) {
             IComposite composite = mainComposite.getTextComponents().get(i);
-            logger.info("IN getAllText :IN write() : process writing paragraph #" + i + " was start...");
             String recoveredText = composite.write();
             allText.append(recoveredText);
         }

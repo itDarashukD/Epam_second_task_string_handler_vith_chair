@@ -5,8 +5,8 @@ import by.darashuk.training.composite.TextComposite;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import static by.darashuk.training.composite.ComponentType.PARAGRAPH;
-import static by.darashuk.training.parser.Separator.PARAGRAPHS_SEPARATOR;
+import static by.darashuk.training.enums.ComponentType.PARAGRAPH;
+import static by.darashuk.training.constants.TextConstants.PARAGRAPHS_SEPARATOR;
 
 public class Text extends DataParser {
 
@@ -21,7 +21,6 @@ public class Text extends DataParser {
         if (component == null || StringUtils.isEmpty(input)) {
             logger.info("IN parseText() IN Text: We got a problem : component==null||StringUtils.isEmpty(input) !");
         } else {
-
             logger.info("IN parseText() Text : process parsing was start...");
 
             String[] paragraphs = input.trim().split(PARAGRAPHS_SEPARATOR);

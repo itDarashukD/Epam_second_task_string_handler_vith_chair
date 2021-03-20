@@ -1,12 +1,12 @@
 package by.darashuk.training.composite;
 
-import by.darashuk.training.action.TextAction;
 import by.darashuk.training.composite.api.IComposite;
+import by.darashuk.training.enums.ComponentType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static by.darashuk.training.parser.Separator.*;
+import static by.darashuk.training.constants.TextConstants.*;
 
 public class TextComposite implements IComposite {
 
@@ -31,7 +31,6 @@ public class TextComposite implements IComposite {
                     stringBuilder.append(composite.write()).append(SPACE_SEPARATOR);
                 }
                 break;
-
             default:
                 for (IComposite composite : compositeList) {
                     stringBuilder.append(composite.write());
@@ -49,10 +48,5 @@ public class TextComposite implements IComposite {
     @Override
     public List<IComposite> getTextComponents() {
         return compositeList;
-    }
-
-    @Override
-    public ComponentType getComponentType() {
-        return componentType;
     }
 }

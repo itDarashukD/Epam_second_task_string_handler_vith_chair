@@ -1,6 +1,7 @@
 package by.darashuk.training.composite;
 
 import by.darashuk.training.composite.api.IComposite;
+import by.darashuk.training.enums.ComponentType;
 
 public class Symbol implements IComposite {
     private final Character character;

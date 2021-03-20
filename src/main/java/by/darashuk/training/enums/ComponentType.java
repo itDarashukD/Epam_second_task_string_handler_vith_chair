@@ -1,4 +1,4 @@
-package by.darashuk.training.composite;
+package by.darashuk.training.enums;
 
 public enum ComponentType {
     TEXT,

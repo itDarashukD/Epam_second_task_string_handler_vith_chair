@@ -5,7 +5,7 @@ import by.darashuk.training.composite.api.IComposite;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 
-import static by.darashuk.training.composite.ComponentType.LETTER;
+import static by.darashuk.training.enums.ComponentType.LETTER;
 
 public class Word extends DataParser {
 
@@ -16,10 +16,9 @@ public class Word extends DataParser {
         if (component == null || StringUtils.isEmpty(input)) {
             logger.info("IN parseText() IN Word: We got a problem : component==null||StringUtils.isEmpty(input) !");
         } else {
-
             char[] characters = input.toCharArray();
-            for (char ch : characters) {
-                component.add(new Symbol(ch, LETTER));
+            for (char symbol : characters) {
+                component.add(new Symbol(symbol, LETTER));
             }
         }
     }

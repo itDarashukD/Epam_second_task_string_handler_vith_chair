@@ -8,8 +8,8 @@ import org.apache.log4j.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static by.darashuk.training.composite.ComponentType.SENTENCE;
-import static by.darashuk.training.parser.Separator.SENTENCES_SEPARATOR;
+import static by.darashuk.training.enums.ComponentType.SENTENCE;
+import static by.darashuk.training.constants.TextConstants.SENTENCES_SEPARATOR;
 
 public class Paragraph extends DataParser {
 

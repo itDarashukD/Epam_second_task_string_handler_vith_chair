@@ -1,7 +1,6 @@
 package by.darashuk.training.parser;
 
-import by.darashuk.training.action.TextAction;
-import by.darashuk.training.composite.ComponentType;
+import by.darashuk.training.enums.ComponentType;
 import by.darashuk.training.composite.Symbol;
 import by.darashuk.training.composite.api.IComposite;
 import by.darashuk.training.composite.TextComposite;
@@ -11,6 +10,9 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
+
+import static by.darashuk.training.constants.TextConstants.PUNCTUATION;
+import static by.darashuk.training.constants.TextConstants.REGEX_BLANKS;
 
 public class Lexeme extends DataParser {
 
@@ -25,11 +27,12 @@ public class Lexeme extends DataParser {
         if (component == null || StringUtils.isEmpty(input)) {
             logger.info("IN parseText() IN Lexeme: We got a problem : component==null||StringUtils.isEmpty(input) !");
         } else {
+            char[] charArray = input.toCharArray();
 
             ArrayList<String> arrayOfWords = new ArrayList<>(
                     Arrays.asList(input
-                            .replaceAll("\\p{Punct}", "")
-                            .split("\\p{Blank}")));
+                            .replaceAll(PUNCTUATION, "")
+                            .split(REGEX_BLANKS)));
 
             for (String stringWords : arrayOfWords
             ) {
@@ -37,10 +40,9 @@ public class Lexeme extends DataParser {
                 component.add(current);
                 this.getNext().parseText(current, stringWords);
             }
-            char[] charArray = input.toCharArray();
             for (char character : charArray
             ) {
-                if (Pattern.matches(Separator.PUNCTUATION, String.valueOf(character))) {
+                if (Pattern.matches(PUNCTUATION, String.valueOf(character))) {
                     component.add(new Symbol(character, ComponentType.SIGN));
                 }
             }

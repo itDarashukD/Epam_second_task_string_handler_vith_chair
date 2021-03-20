@@ -6,14 +6,16 @@ import by.darashuk.training.composite.TextComposite;
 import by.darashuk.training.reader.TextReader;
 import org.apache.log4j.Logger;
 
-import static by.darashuk.training.composite.ComponentType.TEXT;
+import static by.darashuk.training.enums.ComponentType.TEXT;
+import static by.darashuk.training.constants.TextConstants.FILE_PATH;
+import static by.darashuk.training.constants.TextConstants.WORD_LENGTH;
+
 /**
  * 12. Remove from the text all words of a given length beginning with a consonant letter.
  */
 public class App {
 
     private final static Logger logger = Logger.getLogger(App.class);
-    private static final String FILE_PATH = "src/main/resources/MainText.txt";
 
     public static void main(String[] args) {
         logger.info("IN main() : program start...");
@@ -28,6 +30,6 @@ public class App {
         TextComposite mainComposite = new TextComposite(TEXT);
         textParser.parseText(mainComposite, input);
 
-        new TextAction().deleteSomeWords(mainComposite);
+        new TextAction().deleteSomeWords(mainComposite,WORD_LENGTH);
     }
 }

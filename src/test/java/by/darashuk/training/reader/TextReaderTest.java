@@ -4,12 +4,12 @@ import by.darashuk.training.InitDataForTests;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import static by.darashuk.training.constants.TextConstants.STRING_FOR_TEST;
 import static org.testng.Assert.assertEquals;
 
 public class TextReaderTest {
 
     private TextReader reader;
-    private final String STRING_FOR_TEST = "src/test/resources/ForTest.txt";
 
     @BeforeClass
     public void setUp() {
